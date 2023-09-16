@@ -1,0 +1,130 @@
+openapi: 3.1.0
+x-stoplight:
+  id: bhxwpbbpqtbrx
+info:
+  title: playground
+  version: '1.0'
+  summary: Playground for testing
+  description: 'This OpenAPI specification facilitates the creation of HTTP endpoints, enabling dynamic interactions with a live server. It''s a perfect tool for experimenting with concepts, conducting tests, and integrating various components.'
+  contact:
+    name: Christian Maksymenko
+    url: 'https://www.linkedin.com/in/cmaksymenko/'
+    email: christian.maksymenko@gmail.com
+  termsOfService: 'https://opensource.org/license/mit/'
+  license:
+    name: MIT
+    url: 'https://opensource.org/license/mit/'
+servers:
+  - url: 'http://localhost:8080/api'
+    description: local
+paths:
+  /functions/reverseWords:
+    post:
+      summary: Word order reversal
+      operationId: createReverseWordsFunction
+      requestBody:
+        description: String to reverse
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                inputString:
+                  type: string
+                  example: Write a function
+                  description: 'The original string in which the order of words will be reversed. This string should consist of one or more words separated by spaces. Special characters, numbers, and punctuation can be part of the words.'
+              required:
+                - inputString
+      responses:
+        '200':
+          description: Successfully reversed string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reversedString:
+                    type: string
+                    example: function a Write
+                    description: 'The modified string where the order of words from the inputString is reversed. Each word maintains its original sequence of characters, but the overall order of words is flipped.'
+                required:
+                  - reversedString
+        '400':
+          description: 'Bad request, possibly an invalid or empty string provided'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      description: Reverse the order of words in a string
+      x-stoplight:
+        id: rf3w8pmukcl7h
+      tags:
+        - FunctionTests
+    parameters: []
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          $ref: '#/components/schemas/ErrorObject'
+      required:
+        - error
+      title: Error Response
+      description: The top-level structure encapsulating standard error details.
+    ErrorObject:
+      type: object
+      properties:
+        code:
+          type: string
+          description: A machine-readable error code.
+        message:
+          type: string
+          description: A human-readable representation of the error.
+        target:
+          type: string
+          description: 'The target of the error, such as a specific parameter.'
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/ErrorDetail'
+          description: An array containing detailed error information.
+        innerError:
+          $ref: '#/components/schemas/InnerErrorObject'
+          description: An object containing more detailed diagnostic information.
+      title: Main Error Object
+      description: 'The primary error structure capturing essential error information, potential additional details, and inner diagnostic details.'
+    ErrorDetail:
+      type: object
+      properties:
+        code:
+          type: string
+          description: A more specific error code representing the detail.
+        message:
+          type: string
+          description: A detailed human-readable error message.
+        target:
+          type: string
+          description: The target of the error detail.
+      title: Error Detail
+      description: An individual error structure that provides granular error specifics often used within an array in the main error object.
+    InnerErrorObject:
+      type: object
+      properties:
+        requestId:
+          type: string
+          description: 'A unique identifier for the request, useful for tracking and diagnostics.'
+        date:
+          type: string
+          format: date-time
+          description: The date and time when the error occurred.
+      title: Inner Error Diagnostic
+      description: 'A structure containing detailed diagnostic information about the error, including request identification and timestamp.'
+tags:
+  - name: DesignTests
+    description: 'Endpoints designed to test various generator tools, validation mechanisms, and other API-related utilities.'
+  - name: FunctionTests
+    description: 'Endpoints related to executing internal methods, typically used for coding tests.'
+  - name: IntegrationTests
+    description: 'Endpoints associated with the integration of cloud resources such as databases, Kafka, and more.'
