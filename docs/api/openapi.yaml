@@ -1,10 +1,7 @@
-openapi: 3.1.0
-x-stoplight:
-  id: bhxwpbbpqtbrx
+openapi: 3.0.0
 info:
   title: playground
   version: '1.0'
-  summary: Playground for testing
   description: 'This OpenAPI specification facilitates the creation of HTTP endpoints, enabling dynamic interactions with a live server. It''s a perfect tool for experimenting with concepts, conducting tests, and integrating various components.'
   contact:
     name: Christian Maksymenko
