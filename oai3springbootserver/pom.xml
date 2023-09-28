@@ -71,16 +71,47 @@
 							<goal>generate</goal>
 						</goals>
 						<configuration>
-							<inputSpec>
-								${project.basedir}/../docs/api/openapi.yaml</inputSpec>
+							<inputSpec>${project.basedir}/../docs/api/openapi.yaml</inputSpec>
 							<generatorName>spring</generatorName>
 							<configOptions>
+								<library>spring-boot</library>
 								<interfaceOnly>true</interfaceOnly>
 								<defaultInterfaces>true</defaultInterfaces>
+								<useSpringBoot3>true</useSpringBoot3>
 								<useJakartaEe>true</useJakartaEe>
+								<useSpringController>true</useSpringController>
+								<requestMappingMode>api_interface</requestMappingMode>
+								<useTags>true</useTags>
 							</configOptions>
 							<apiPackage>com.cmaksymenko.playground.webapi.api</apiPackage>
-							<modelPackage>com.cmaksymenko.playground.webapi.model</modelPackage>
+							<modelPackage>com.cmaksymenko.playground.webapi.model</modelPackage>					
+							<strictSpec>true</strictSpec>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<release>${java.version}</release>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>add-source</goal>
+						</goals>
+						<configuration>
+							<sources>
+								<source>
+									${project.build.directory}/generated-sources/openapi/src/main/java
+								</source>
+							</sources>
 						</configuration>
 					</execution>
 				</executions>
@@ -91,7 +122,7 @@
 				<version>3.1.0</version>
 				<configuration>
 					<mainClass>
-						com.cmaksymenko.playground.oai3springbootserver.Application
+						com.cmaksymenko.playground.server.Server
 					</mainClass>
 				</configuration>
 			</plugin>
