@@ -57,7 +57,7 @@ paths:
       x-stoplight:
         id: rf3w8pmukcl7h
       tags:
-        - FunctionTests
+        - Function
     parameters: []
 components:
   schemas:
@@ -119,9 +119,9 @@ components:
       title: Inner Error Diagnostic
       description: 'A structure containing detailed diagnostic information about the error, including request identification and timestamp.'
 tags:
-  - name: DesignTests
+  - name: Design
     description: 'Endpoints designed to test various generator tools, validation mechanisms, and other API-related utilities.'
-  - name: FunctionTests
+  - name: Function
     description: 'Endpoints related to executing internal methods, typically used for coding tests.'
-  - name: IntegrationTests
+  - name: Integration
     description: 'Endpoints associated with the integration of cloud resources such as databases, Kafka, and more.'
