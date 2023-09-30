@@ -58,6 +58,11 @@
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+			<version>2.2.0</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
@@ -88,7 +93,8 @@
 								<useTags>true</useTags>
 							</configOptions>
 							<apiPackage>com.cmaksymenko.playground.webapi.api</apiPackage>
-							<modelPackage>com.cmaksymenko.playground.webapi.model</modelPackage>
+							<modelPackage>
+								com.cmaksymenko.playground.webapi.model</modelPackage>
 							<strictSpec>true</strictSpec>
 						</configuration>
 					</execution>
@@ -126,7 +132,7 @@
 				<version>3.1.0</version>
 				<configuration>
 					<mainClass>
-						com.cmaksymenko.playground.server.Application
+						com.cmaksymenko.playground.Application
 					</mainClass>
 				</configuration>
 			</plugin>

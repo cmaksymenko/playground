@@ -3,6 +3,13 @@ server:
   servlet:
     context-path: /
     
+springdoc:
+  api-docs:
+    path: "/api/specs/openapi"
+  swagger-ui:
+    enabled: true
+    path: "/api/docs"
+    
 management:
   endpoints:
     web:
