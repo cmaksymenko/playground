@@ -1,4 +1,4 @@
-package com.cmaksymenko.playground.common;
+package com.cmaksymenko.playground.functions;
 
 import java.util.ArrayList;
 import java.util.List;

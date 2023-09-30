@@ -1,13 +1,13 @@
-package com.cmaksymenko.playground.server;
+package com.cmaksymenko.playground;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Server {
+public class Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Server.class, args);
+		SpringApplication.run(Application.class, args);
 	}
 
 }
