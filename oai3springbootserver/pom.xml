@@ -54,6 +54,10 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
@@ -71,7 +75,8 @@
 							<goal>generate</goal>
 						</goals>
 						<configuration>
-							<inputSpec>${project.basedir}/../docs/api/openapi.yaml</inputSpec>
+							<inputSpec>
+								${project.basedir}/../docs/api/openapi.yaml</inputSpec>
 							<generatorName>spring</generatorName>
 							<configOptions>
 								<library>spring-boot</library>
@@ -79,12 +84,11 @@
 								<defaultInterfaces>true</defaultInterfaces>
 								<useSpringBoot3>true</useSpringBoot3>
 								<useJakartaEe>true</useJakartaEe>
-								<useSpringController>true</useSpringController>
 								<requestMappingMode>api_interface</requestMappingMode>
 								<useTags>true</useTags>
 							</configOptions>
 							<apiPackage>com.cmaksymenko.playground.webapi.api</apiPackage>
-							<modelPackage>com.cmaksymenko.playground.webapi.model</modelPackage>					
+							<modelPackage>com.cmaksymenko.playground.webapi.model</modelPackage>
 							<strictSpec>true</strictSpec>
 						</configuration>
 					</execution>
@@ -122,7 +126,7 @@
 				<version>3.1.0</version>
 				<configuration>
 					<mainClass>
-						com.cmaksymenko.playground.server.Server
+						com.cmaksymenko.playground.server.Application
 					</mainClass>
 				</configuration>
 			</plugin>
